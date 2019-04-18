@@ -21,7 +21,7 @@ where **11223344556677889900** - license key
 `poweroff`
 
 ### Turn off container (from host)
-docker stop splynx-container
+`docker stop splynx-container`
 
 ---
 
