@@ -20,6 +20,6 @@ docker stop splynx-container
 
 ---
 
-Links:
-Systemd - https://hub.docker.com/r/jrei/systemd-ubuntu/
-Volumes - https://stackoverflow.com/questions/41935435/understanding-volume-instruction-in-dockerfile
+Links:  
+* Systemd - https://hub.docker.com/r/jrei/systemd-ubuntu/
+* Volumes - https://stackoverflow.com/questions/41935435/understanding-volume-instruction-in-dockerfile
