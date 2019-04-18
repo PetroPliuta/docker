@@ -12,7 +12,7 @@ where **11223344556677889900** - license key
 ### Exit from container  
 `exit`
 
-### Turn off container (from container)  
+### Turn off container (from container)  
 `poweroff`
 
 ### Turn off container (from host)
