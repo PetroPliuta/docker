@@ -22,7 +22,6 @@ services:
     privileged: true
 
 volumes:
-  - splynx: {}
-  - mysql-data: {}
-  - etc: {}
-
+  splynx:
+  mysql-data:
+  etc:
