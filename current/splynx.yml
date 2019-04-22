@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  splynx:
+    build:
+      context: .
+      dockerfile: Dockerfile_2_3
+    image: pliuta/splynx:2.3
+    container_name: splynx-container
+    ports: 
+      - "80:80"
+      - "443:443"
+      - "1812:1812/udp"
+      - "1813:1813/udp"
+    tmpfs:
+      - /var/tmp
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - splynx:/var/www/splynx
+      - mysql-data:/var/lib/mysql
+      - etc:/etc
+    privileged: true
+
+volumes:
+  - splynx:
+  - mysql-data:
+  - etc:
