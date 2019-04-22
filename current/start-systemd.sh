@@ -11,6 +11,9 @@ if ! [ $redis_pass -eq $splynx_redis_pass ]; then
     redis_setup
 fi
 
+#If Splynx version was updated
+dpkg-reconfigure -fnoninteractive splynx >>/var/www/splynx/docker/log.log 2>&1
+
 init()
 {
     dpkg-reconfigure -fnoninteractive splynx >>/var/www/splynx/docker/log.log 2>&1
