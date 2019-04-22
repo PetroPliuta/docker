@@ -1,8 +1,0 @@
-[Unit]
-After=mysql.service
-
-[Service]
-ExecStart=/var/www/splynx/docker/start-systemd.sh
-
-[Install]
-WantedBy=default.target
