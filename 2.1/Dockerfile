@@ -31,6 +31,7 @@ RUN export DEBIAN_FRONTEND="noninteractive" \
 RUN export DEBIAN_FRONTEND="noninteractive" \
     && apt-get update \
     && apt-get -y install wget \
+    && wget -qO- https://deb.splynx.com/setup_1_3 | bash - \
     && wget -qO- https://deb.splynx.com/setup_2_1 | bash - \
     && apt-get -y install splynx; \
 #clean
