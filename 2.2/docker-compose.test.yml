@@ -4,7 +4,7 @@ services:
 #    build:
 #      context: .
 #      dockerfile: Dockerfile_2_3
-    image: pliuta/splynx:${SPLYNX_VERSION}
+    image: pliuta/splynx:2.2
     entrypoint: /var/www/splynx/docker/tests.sh
 #    tmpfs:
 #      - /var/tmp
