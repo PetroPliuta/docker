@@ -1,6 +1,9 @@
 version: "3"
 services:
   sut:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile_2_3
     image: pliuta/splynx:2.3
     entrypoint: /var/www/splynx/docker/tests.sh
 #    tmpfs:
