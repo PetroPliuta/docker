@@ -1,0 +1,23 @@
+version: "3"
+services:
+  sut:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile_2_3
+    image: pliuta/splynx:${SPLYNX_VERSION}
+    entrypoint: /var/www/splynx/docker/tests.sh
+#    tmpfs:
+#      - /var/tmp
+#      - /tmp
+#    volumes:
+#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+#      - splynx:/var/www/splynx
+#      - mysql-data:/var/lib/mysql
+#      - etc:/etc
+#privileged: true
+#
+#volumes:
+#  splynx:
+#  mysql-data:
+#  etc:
+
