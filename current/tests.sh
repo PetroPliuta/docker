@@ -2,8 +2,8 @@
 
 splynx_package_apt_status=`apt-cache show splynx | awk '/Status/ {print $NF}'`
 
-if [ $splynx_package_apt_status -eq "installed"]; then
-    return 0
+if [ "$splynx_package_apt_status" = "installed" ]; then
+    exit 0
 else
-    return 1
+    exit 1
 fi
