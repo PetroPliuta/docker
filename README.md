@@ -3,13 +3,15 @@ https://splynx.com
 
 ---
 
-### Start container at first time  
-`docker run --rm --name splynx-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p80:80 -p443:443 -p1812:1812/udp -p1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc pliuta/splynx 11223344556677889900`
+### Create Splynx container  
+`docker run --rm --name splynx-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p80:80 -p443:443 -p1812:1812/udp -p1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc pliuta/splynx 11223344556677889900 Europe/Prague`
 
-where **11223344556677889900** - license key
+where:  
+* **11223344556677889900** - license key
+* **Europe/Prague** - timezone. You can figure out your timezone here - https://www.zeitverschiebung.net/en/
 
 ### Start container  
-`docker run --rm --name splynx-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p80:80 -p443:443 -p1812:1812/udp -p1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc pliuta/splynx`
+`docker start splynx-container`
 
 ### Enter into container  
 `docker exec -it splynx-container bash`
