@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV container=docker LC_ALL=C SPLYNX_VERSION=2.1
+ENV container=docker LC_ALL=C
 
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
