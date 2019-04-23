@@ -37,8 +37,8 @@ RUN export DEBIAN_FRONTEND="noninteractive" \
     unset DEBIAN_FRONTEND \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY start.sh start-systemd.sh splynx-start.service /var/www/splynx/docker/
-RUN chmod +x /var/www/splynx/docker/start*
+COPY start.sh start-systemd.sh splynx-start.service tests.sh /var/www/splynx/docker/
+RUN chmod +x /var/www/splynx/docker/start* /var/www/splynx/docker/tests.sh
 
 VOLUME [ "/sys/fs/cgroup", "/var/www/splynx", "/var/lib/mysql", "/etc", "/var/log", "/tmp", "/var/tmp" ]
 
