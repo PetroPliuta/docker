@@ -20,7 +20,7 @@ services:
       - mysql-data:/var/lib/mysql
       - etc:/etc
     privileged: true
-
+#
 volumes:
   splynx:
   mysql-data:
