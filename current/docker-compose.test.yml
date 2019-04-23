@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3"
 services:
   sut:
     image: pliuta/splynx:2.3
@@ -17,3 +17,4 @@ services:
 #  splynx:
 #  mysql-data:
 #  etc:
+
