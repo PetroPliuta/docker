@@ -3,6 +3,9 @@ https://splynx.com
 
 ---
 
+***WARNING! This document is under heavy development. Not compatible changes can be made.***
+
+
 ### Create Splynx container  
 `docker run --rm --name splynx-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p80:80 -p443:443 -p1812:1812/udp -p1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc pliuta/splynx 11223344556677889900 Europe/Prague`
 
