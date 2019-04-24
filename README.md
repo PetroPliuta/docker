@@ -29,7 +29,7 @@ where:
 `docker stop splynx-container`
 
 ---
-Splynx web interface will be available on the 80/tcp port of the host. You can change this by changing docker create command. Change **-p 80:80** to **-p host_port:container_port ** . For instance if you write **-p 8080:80**, Splynx will be available on the 8080 port of the host.
+Splynx web interface will be available on the 80/tcp port of the host. You can change this by changing docker create command. Change **-p 80:80** to **\-p host_port:container_port** . For instance if you write **-p 8080:80**, Splynx will be available on the 8080 port of the host.
 Default login/password is admin/docker.
 
 Links:  
