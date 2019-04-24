@@ -17,6 +17,7 @@ fi
 if [ -e /usr/share/zoneinfo/$2 ]; then
     ln -sfv /usr/share/zoneinfo/$2 /etc/localtime >>/var/www/splynx/docker/log.log 2>&1
     sed -i s/timezone.*/timezone=\"$2\"/g /var/www/splynx/config/config.php >>/var/www/splynx/docker/log.log 2>&1
+    dpkg-reconfigure -f noninteractive tzdata >>/var/www/splynx/docker/log.log 2>&1
 fi
 
 cp -fv /var/www/splynx/docker/splynx-start.service /etc/systemd/system/multi-user.target.wants/splynx-start.service >>/var/www/splynx/docker/log.log 2>&1
