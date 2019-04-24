@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#$1 - license
-#$2 - timezone
-
 #fix mysql log permissions
 chown mysql:adm /var/log/mysql/error.log >>/var/www/splynx/docker/log.log 2>&1
 chown mysql:adm /var/log/mysql >>/var/www/splynx/docker/log.log 2>&1
