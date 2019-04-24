@@ -7,7 +7,7 @@ chown mysql:adm /var/log/mysql >>/var/www/splynx/docker/log.log 2>&1
 #if license is not set - try to set license
 license_length=`grep license /var/www/splynx/config/config.php | grep -v ^# | tail -n 1 | cut -d= -f2 | tr -d "\n\r\" " | wc -m`
 if [ "$license_length" -ne "32" ]; then
-    sed -i s/license.*/license=$1/g /var/www/splynx/config/config.php >>/var/www/splynx/docker/log.log 2>&1
+    echo $1 >/var/www/splynx/docker/license
 fi
 
 #set timezone
