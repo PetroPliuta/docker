@@ -7,7 +7,7 @@ https://splynx.com
 
 
 ### Create Splynx container  
-`docker create --name splynx-container --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 1812:1812/udp -p 1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc pliuta/splynx:2.3 11223344556677889900 Europe/Prague`
+`docker create --name splynx-container --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 1812:1812/udp -p 1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc pliuta/splynx 11223344556677889900 Europe/Prague`
 
 where:  
 * **11223344556677889900** - license key
