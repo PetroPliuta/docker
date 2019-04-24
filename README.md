@@ -3,9 +3,6 @@ https://splynx.com
 
 ---
 
-***WARNING! This document is under heavy development. Not compatible changes can be made.***
-
-
 ### Create Splynx container  
 `docker create --name splynx-container --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 1812:1812/udp -p 1813:1813/udp -v splynx:/var/www/splynx -v mysql-data:/var/lib/mysql -v etc:/etc --mount type=tmpfs,destination=/tmp --mount type=tmpfs,destination=/var/tmp pliuta/splynx 0011223344556677889900 Europe/Prague`
 
