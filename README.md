@@ -10,12 +10,13 @@ where:
 * **11223344556677889900** - license key
 * **Europe/Prague** - timezone. You can figure out your timezone here - https://www.zeitverschiebung.net/en/
 
-replace **pliuta/splynx** to:
+By default you will run latest stable Splynx version. If you want to run other version, replace **pliuta/splynx** to:
 * **pliuta/splynx:1.3** to create container with Splynx 1.3  
 * **pliuta/splynx:2.0** to create container with Splynx 2.0  
 * **pliuta/splynx:2.1** to create container with Splynx 2.1  
 * **pliuta/splynx:2.2** to create container with Splynx 2.2  
 * **pliuta/splynx:2.3** to create container with Splynx 2.3  
+* **pliuta/splynx:3.0** to create container with Splynx 3.0  
 
 ### Start container  
 `docker start splynx-container`
