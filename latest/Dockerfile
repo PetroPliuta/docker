@@ -7,6 +7,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 RUN export DEBIAN_FRONTEND="noninteractive" \
     && apt-get update \
     && apt-get install -y apt-utils \
+    && apt-get install -y dialog \
     && apt-get install -y systemd \
 #clean
     && unset DEBIAN_FRONTEND \
