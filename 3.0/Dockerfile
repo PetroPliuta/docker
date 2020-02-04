@@ -2,18 +2,13 @@ FROM ubuntu:16.04
 
 ENV container=docker LC_ALL=C
 
-RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
-
-RUN export DEBIAN_FRONTEND="noninteractive" \
+RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
+    && rm -f /usr/sbin/policy-rc.d \
+    && export DEBIAN_FRONTEND="noninteractive" \
     && apt-get update \
     && apt-get install -y apt-utils \
     && apt-get install -y dialog \
     && apt-get install -y systemd \
-#clean
-    && unset DEBIAN_FRONTEND \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    \
-    \
 #systemd fixes
     && cd /lib/systemd/system/sysinit.target.wants/ \
     && ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
@@ -26,10 +21,8 @@ RUN export DEBIAN_FRONTEND="noninteractive" \
     /lib/systemd/system/basic.target.wants/* \
     /lib/systemd/system/anaconda.target.wants/* \
     /lib/systemd/system/plymouth* \
-    /lib/systemd/system/systemd-update-utmp*
-
+    /lib/systemd/system/systemd-update-utmp* \
 #Splynx
-RUN export DEBIAN_FRONTEND="noninteractive" \
     && apt-get update \
     && apt-get -y install wget \
     && wget -qO- https://deb.splynx.com/setup_3_0 | bash - \
