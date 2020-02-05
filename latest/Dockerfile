@@ -2,18 +2,15 @@ FROM ubuntu:16.04
 
 ENV container=docker LC_ALL=C
 
-RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
-
-RUN export DEBIAN_FRONTEND="noninteractive" \
+RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
+    && rm -f /usr/sbin/policy-rc.d \
+    && export DEBIAN_FRONTEND="noninteractive" \
+    && export RUNLEVEL=5 \
     && apt-get update \
     && apt-get install -y apt-utils \
     && apt-get install -y dialog \
     && apt-get install -y systemd \
-#clean
-    && unset DEBIAN_FRONTEND \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    \
-    \
+    && apt-get install -y dbus \
 #systemd fixes
     && cd /lib/systemd/system/sysinit.target.wants/ \
     && ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
@@ -26,22 +23,21 @@ RUN export DEBIAN_FRONTEND="noninteractive" \
     /lib/systemd/system/basic.target.wants/* \
     /lib/systemd/system/anaconda.target.wants/* \
     /lib/systemd/system/plymouth* \
-    /lib/systemd/system/systemd-update-utmp*
-
+    /lib/systemd/system/systemd-update-utmp* \
 #Splynx
-RUN export DEBIAN_FRONTEND="noninteractive" \
-    && apt-get update \
     && apt-get -y install wget \
     && wget -qO- https://deb.splynx.com/setup | bash - \
-    && apt-get -y install splynx; \
+    && apt-get -y install splynx command-not-found bash-completion \
+    && /var/www/splynx/system/script/passwd admin admin docker \
 #clean
-    unset DEBIAN_FRONTEND \
+    && unset DEBIAN_FRONTEND \
+    && unset RUNLEVEL \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY start.sh start-systemd.sh splynx-start.service /var/www/splynx/docker/
 RUN chmod +x /var/www/splynx/docker/start*
 
-VOLUME [ "/sys/fs/cgroup", "/var/www/splynx", "/var/lib/mysql", "/etc", "/var/log", "/tmp", "/var/tmp" ]
+VOLUME [ "/var/www/splynx", "/var/lib/mysql", "/etc", "/var/log" ]
 
 EXPOSE 80 443 1812/udp 1813/udp
 
