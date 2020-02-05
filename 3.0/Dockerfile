@@ -5,6 +5,7 @@ ENV container=docker LC_ALL=C
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     && rm -f /usr/sbin/policy-rc.d \
     && export DEBIAN_FRONTEND="noninteractive" \
+    && export RUNLEVEL=5 \
     && apt-get update \
     && apt-get install -y apt-utils \
     && apt-get install -y dialog \
@@ -29,6 +30,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     && apt-get -y install splynx; \
 #clean
     unset DEBIAN_FRONTEND \
+    unset RUNLEVEL \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY start.sh start-systemd.sh splynx-start.service /var/www/splynx/docker/
