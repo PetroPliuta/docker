@@ -41,3 +41,4 @@ Splynx web interface will be available on the 80/tcp port of the host. You can c
 Links:  
 * Systemd - https://hub.docker.com/r/jrei/systemd-ubuntu/
 * Volumes - https://stackoverflow.com/questions/41935435/understanding-volume-instruction-in-dockerfile
+* About Ubuntu image - https://habr.com/ru/post/247903/
