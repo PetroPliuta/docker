@@ -3,8 +3,8 @@ services:
   splynx:
     build:
       context: .
-      dockerfile: Dockerfile_2_3
-    image: pliuta/splynx:2.3
+      dockerfile: Dockerfile
+    image: pliuta/splynx
     container_name: splynx-container
     ports: 
       - "80:80"
@@ -16,12 +16,14 @@ services:
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - splynx:/var/www/splynx
-      - mysql-data:/var/lib/mysql
-      - etc:/etc
+      - splynx-files:/var/www/splynx
+      - splynx-mysql-data:/var/lib/mysql
+      - splynx-etc:/etc
+      - splynx-logs:/var/log
     privileged: true
 #
 volumes:
-  splynx:
-  mysql-data:
-  etc:
+  splynx-files:
+  splynx-mysql-data:
+  splynx-etc:
+  splynx-logs:
