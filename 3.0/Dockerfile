@@ -10,6 +10,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     && apt-get install -y apt-utils \
     && apt-get install -y dialog \
     && apt-get install -y systemd \
+    && apt-get install -y dbus \
 #systemd fixes
     && cd /lib/systemd/system/sysinit.target.wants/ \
     && ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
@@ -30,7 +31,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     && apt-get -y install splynx; \
 #clean
     unset DEBIAN_FRONTEND \
-    unset RUNLEVEL \
+    && unset RUNLEVEL \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY start.sh start-systemd.sh splynx-start.service /var/www/splynx/docker/
