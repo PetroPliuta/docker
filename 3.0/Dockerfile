@@ -37,7 +37,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
 COPY start.sh start-systemd.sh splynx-start.service /var/www/splynx/docker/
 RUN chmod +x /var/www/splynx/docker/start*
 
-VOLUME [ "/sys/fs/cgroup", "/var/www/splynx", "/var/lib/mysql", "/etc", "/var/log", "/tmp", "/var/tmp" ]
+VOLUME [ "/var/www/splynx", "/var/lib/mysql", "/etc", "/var/log" ]
 
 EXPOSE 80 443 1812/udp 1813/udp
 
