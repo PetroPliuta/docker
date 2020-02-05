@@ -9,8 +9,6 @@
 #     rm -fv /var/www/splynx/docker/license >>/var/www/splynx/docker/log.log 2>&1
 # fi
 
-/var/www/splynx/system/script/passwd admin admin docker >>/var/www/splynx/docker/log.log 2>&1
-
 redis_pass=`grep -i requirepass /etc/redis/redis.conf | grep -v ^# | tail -n 1 | cut -d\  -f2 | tr -d "\n\r\" "`
 splynx_redis_pass=`grep -i password /var/www/splynx/config/redis.php | grep -v ^# | tail -n 1 | cut -d= -f2 | tr -d "\n\r\" "`
 if [ "$redis_pass" != "$splynx_redis_pass" -a -e "/var/www/splynx/config/redis.php" ]; then

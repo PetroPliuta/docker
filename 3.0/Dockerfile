@@ -29,6 +29,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     && apt-get -y install wget \
     && wget -qO- https://deb.splynx.com/setup_3_0 | bash - \
     && apt-get -y install splynx; \
+    && /var/www/splynx/system/script/passwd admin admin docker \
 #clean
     unset DEBIAN_FRONTEND \
     && unset RUNLEVEL \
