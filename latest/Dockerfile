@@ -3,13 +3,17 @@ FROM ubuntu:16.04
 ENV container=docker LC_ALL=C
 
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
+#allow work with services
     && rm -f /usr/sbin/policy-rc.d \
+#do not ask questions during apt install
     && export DEBIAN_FRONTEND="noninteractive" \
+#allow start redis-server (mysql-server)
     && export RUNLEVEL=5 \
     && apt-get update \
     && apt-get install -y apt-utils \
     && apt-get install -y dialog \
     && apt-get install -y systemd \
+#fix hostnamectl
     && apt-get install -y dbus \
 #systemd fixes
     && cd /lib/systemd/system/sysinit.target.wants/ \
@@ -25,20 +29,20 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     /lib/systemd/system/plymouth* \
     /lib/systemd/system/systemd-update-utmp* \
 #Splynx
-    && apt-get -y install wget \
+    && apt-get install -y wget \
     && wget -qO- https://deb.splynx.com/setup | bash - \
-    && apt-get -y install splynx command-not-found bash-completion \
+    && apt-get install -y splynx \
+#install useful tools
+    && apt-get install -y command-not-found bash-completion \
+#set default password for web-interface
     && /var/www/splynx/system/script/passwd admin admin docker \
 #clean
     && unset DEBIAN_FRONTEND \
     && unset RUNLEVEL \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY start.sh start-systemd.sh splynx-start.service /var/www/splynx/docker/
-RUN chmod +x /var/www/splynx/docker/start*
-
 VOLUME [ "/var/www/splynx", "/var/lib/mysql", "/etc", "/var/log" ]
 
-EXPOSE 80 443 1812/udp 1813/udp
+EXPOSE 80 443 8101 8102 8103 8104 1812/udp 1813/udp
 
-ENTRYPOINT ["/var/www/splynx/docker/start.sh"]
+ENTRYPOINT ["/lib/systemd/systemd"]
