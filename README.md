@@ -1,44 +1,36 @@
 Splynx Framework – WISP billing and network management  
-https://splynx.com
+https://splynx.com  
 
 ---
 
 ### Create Splynx container  
-`docker create --name splynx-container --privileged -p 80:80 -p 443:443 -p 1812:1812/udp -p 1813:1813/udp -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v splynx-files:/var/www/splynx -v splynx-mysql-data:/var/lib/mysql -v splynx-etc:/etc -v splynx-logs:/var/log --mount type=tmpfs,destination=/tmp --mount type=tmpfs,destination=/var/tmp pliuta/splynx 0011223344556677889900 Europe/Prague`
+`docker create --name splynx-container --privileged -p 80:80 -p 443:443 -p 1812:1812/udp -p 1813:1813/udp -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v splynx-files:/var/www/splynx -v splynx-mysql-data:/var/lib/mysql -v splynx-etc:/etc -v splynx-logs:/var/log --mount type=tmpfs,destination=/tmp --mount type=tmpfs,destination=/var/tmp pliuta/splynx`  
 
-where:  
-* **11223344556677889900** - license key
-* **Europe/Prague** - timezone. You can figure out your timezone here - https://www.zeitverschiebung.net/en/
-
-By default you will run latest stable Splynx version. If you want to run other version, replace **pliuta/splynx** to:
-* **pliuta/splynx:1.3** to create container with Splynx 1.3  
-* **pliuta/splynx:2.0** to create container with Splynx 2.0  
-* **pliuta/splynx:2.1** to create container with Splynx 2.1  
-* **pliuta/splynx:2.2** to create container with Splynx 2.2  
+By default you will run latest stable Splynx version. If you want run another version, replace **pliuta/splynx** to:  
 * **pliuta/splynx:2.3** to create container with Splynx 2.3  
 * **pliuta/splynx:3.0** to create container with Splynx 3.0  
 
 ### Start container  
-`docker start splynx-container`
+`docker start splynx-container`  
 
 ### Enter into container  
-`docker exec -it splynx-container bash`
+`docker exec -it splynx-container bash`  
 
 ### Exit from container  
-`exit`
+`exit`  
 
 ### Turn off container (from container)  
-`poweroff`
+`poweroff`  
 
-### Turn off container (from host)
-`docker stop splynx-container`
+### Turn off container (from host)  
+`docker stop splynx-container`  
 
 ---
-Splynx web interface will be available on the 80/tcp port of the host. You can change port by changing `docker create` command. Change **-p 80:80** to **\-p host_port:container_port** . For instance, if you write **-p 8080:80**, Splynx will be available on the 8080 port of the host.  
+Splynx web interface will be available on the 80/tcp port of the host. You can change web port by changing `docker create` command. Change **-p 80:80** to **\-p host_port:container_port** . For instance, if you write **-p 8080:80**, Splynx will be available on the 8080 port of the host.  
 
-**Default web inteface credentials = admin/docker.**
+**Default web inteface credentials = admin/docker.**  
 
 Links:  
-* Systemd - https://hub.docker.com/r/jrei/systemd-ubuntu/
-* Volumes - https://stackoverflow.com/questions/41935435/understanding-volume-instruction-in-dockerfile
-* About Ubuntu image - https://habr.com/ru/post/247903/
+* Systemd - https://hub.docker.com/r/jrei/systemd-ubuntu/  
+* Volumes - https://stackoverflow.com/questions/41935435/understanding-volume-instruction-in-dockerfile  
+* About Ubuntu image - https://habr.com/ru/post/247903/  
