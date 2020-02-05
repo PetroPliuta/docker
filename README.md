@@ -4,7 +4,7 @@ https://splynx.com
 ---
 
 ### Create Splynx container  
-`docker create --name splynx-container --privileged -p 80:80 -p 443:443 -p 1812:1812/udp -p 1813:1813/udp -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v splynx-files:/var/www/splynx -v splynx-mysql-data:/var/lib/mysql -v splynx-etc:/etc -v splynx-logs:/var/log --mount type=tmpfs,destination=/tmp --mount type=tmpfs,destination=/var/tmp pliuta/splynx`  
+`docker create --name splynx-container --privileged -p 80:80 -p 443:443 -p 8101:8101 -p 8102:8102 -p 8103:8103 -p 8104:8104 -p 1812:1812/udp -p 1813:1813/udp -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v splynx-files:/var/www/splynx -v splynx-mysql-data:/var/lib/mysql -v splynx-etc:/etc -v splynx-logs:/var/log --mount type=tmpfs,destination=/tmp --mount type=tmpfs,destination=/var/tmp pliuta/splynx`  
 
 By default you will run latest stable Splynx version. If you want run another version, replace **pliuta/splynx** to:  
 * **pliuta/splynx:2.3** to create container with Splynx 2.3  
