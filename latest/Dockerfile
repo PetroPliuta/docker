@@ -5,6 +5,8 @@ ENV container=docker LC_ALL=C
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
 #allow work with services
     && rm -f /usr/sbin/policy-rc.d \
+    && dpkg-divert --remove /sbin/initctl \
+    && rm -f /sbin/initctl \
 #do not ask questions during apt install
     && export DEBIAN_FRONTEND="noninteractive" \
 #allow start redis-server (mysql-server)
