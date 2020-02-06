@@ -32,7 +32,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     /lib/systemd/system/systemd-update-utmp* \
 #Splynx
     && apt-get install -y wget \
-    && wget -qO- https://deb.splynx.com/setup | bash - \
+    && wget -qO- https://deb.splynx.com/setup_3_0 | bash - \
     && apt-get install -y splynx \
 #install useful tools
     && apt-get install -y command-not-found bash-completion \
