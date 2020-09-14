@@ -29,6 +29,11 @@ Splynx web interface will be available on the 80/tcp port of the host. You can c
 
 **Default web inteface credentials = admin/docker.**  
 
+### Ubuntu 20.04 fix
+If you want run Splynx container on Ubuntu 20.04, run this on the host machine (otherwise MySQL server will not run):  
+`sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
+sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld`
+
 Links:  
 * Systemd - https://hub.docker.com/r/jrei/systemd-ubuntu/  
 * Volumes - https://stackoverflow.com/questions/41935435/understanding-volume-instruction-in-dockerfile  
