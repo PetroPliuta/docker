@@ -36,6 +36,8 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list \
     && apt-get install -y splynx \
 #install useful tools
     && apt-get install -y command-not-found bash-completion \
+#mysql fix
+    && find /var/lib/mysql -type f -exec touch {} \; \
 #set default password for web-interface
     && /var/www/splynx/system/script/passwd admin admin docker \
 #clean
